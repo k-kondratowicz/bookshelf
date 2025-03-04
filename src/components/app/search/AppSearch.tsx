@@ -1,6 +1,6 @@
 import './AppSearch.scss';
 
-import Button from '../../button/Button';
+import Button from '@/components/button/Button';
 
 export default function AppSearch() {
 	return (

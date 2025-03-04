@@ -1,7 +1,7 @@
 .app-search {
 	display: flex;
 	gap: $spacing_1;
-	max-width: 80%;
+	max-width: calc(50% + #{$spacing_7});
 	height: 100%;
 	margin-inline: auto 0;
 	padding: $spacing_1 $spacing_3;
