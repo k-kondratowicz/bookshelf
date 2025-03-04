@@ -2,6 +2,7 @@ import './LoginPage.scss';
 
 import { useGoogleLogin } from '@react-oauth/google';
 
+import Button from '@/components/button/Button';
 import { useAuthStore } from '@/stores/auth';
 
 export default function LoginPage() {
@@ -18,9 +19,9 @@ export default function LoginPage() {
 		<div className="login-page">
 			<h1 className="login-page__title">Turn the page on a new chapter – log in with Google!</h1>
 
-			<button className="login-page__btn" onClick={() => login()}>
+			<Button theme="light" className="login-page__btn" onClick={() => login()}>
 				Sign in with Google 🚀
-			</button>
+			</Button>
 		</div>
 	);
 }

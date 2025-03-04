@@ -1,0 +1,46 @@
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: $spacing_2;
+	text-align: center;
+	transition: $transition_default;
+	transition-property: color, background-color, border-color;
+	border: 1px solid;
+	border-radius: 0.4rem;
+
+	&--light {
+		color: $color_bg;
+		border-color: $color_text;
+		background-color: $color_text;
+
+		@include on-hover {
+			color: $color_text;
+			border-color: $color_zinc_750;
+			background-color: $color_zinc_900;
+		}
+	}
+
+	&--medium {
+		color: $color_text;
+		border-color: $color_zinc_750;
+		background-color: $color_zinc_750;
+
+		@include on-hover {
+			border-color: $color_zinc_900;
+			background-color: $color_zinc_900;
+		}
+	}
+
+	&--dark {
+		color: $color_text;
+		border-color: $color_zinc_900;
+		background-color: $color_zinc_900;
+
+		@include on-hover {
+			color: $color_bg;
+			border-color: $color_text;
+			background-color: $color_text;
+		}
+	}
+}

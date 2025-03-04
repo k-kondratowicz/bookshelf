@@ -16,16 +16,5 @@
 
 	&__btn {
 		width: 100%;
-		padding: $spacing_2;
-		color: $color_zinc_950;
-		transition: 250ms ease-in-out;
-		transition-property: color, background-color;
-		border-radius: 0.4rem;
-		background-color: $color_zinc_50;
-
-		@include on-hover {
-			color: $color_text;
-			background-color: $color_zinc_500;
-		}
 	}
 }
