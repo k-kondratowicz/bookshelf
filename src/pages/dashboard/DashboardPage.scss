@@ -1,3 +1,22 @@
 .dashboard-page {
-	//todo
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_5;
+	height: 100%;
+
+	&__title {
+		@include font-h2;
+	}
+
+	&__description {
+		@include font-h4;
+
+		font-weight: normal;
+	}
+
+	&__reading-now {
+		flex: 1;
+		border: 1px solid $color_zinc_750;
+		border-radius: 0.4rem;
+	}
 }
