@@ -1,0 +1,10 @@
+.default-layout {
+	&__content {
+		@include wrapper;
+
+		display: flex;
+		flex-direction: column;
+		min-height: 100svh;
+		padding-block: $spacing_2;
+	}
+}

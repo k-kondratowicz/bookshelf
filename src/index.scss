@@ -1,0 +1,46 @@
+@import 'scss-reset';
+@import 'sass';
+
+:root {
+	--header-height: 6.4rem;
+}
+
+html {
+	font-family: $font_sans;
+	font-size: calc(10 / 1440 * 100vw);
+	font-synthesis: none;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+
+	@include bp(1280) {
+		font-size: 10px;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+input {
+	box-sizing: border-box;
+}
+
+body {
+	@include font-base;
+
+	color: $color_text;
+	font-weight: normal;
+	background-color: $color_bg;
+}
+
+button {
+	color: inherit;
+}
+
+.visually-hidden {
+	@include visually-hidden;
+}

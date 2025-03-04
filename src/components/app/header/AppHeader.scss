@@ -1,0 +1,27 @@
+.app-header {
+	--app-header-logo-size: 7.2rem;
+
+	$self: &;
+
+	&__logo {
+		@include font-h4;
+
+		display: flex;
+		align-items: center;
+		height: var(--app-header-logo-size);
+		padding: $spacing_2 $spacing_3;
+		letter-spacing: -0.01em;
+		text-transform: uppercase;
+		border-bottom: 1px solid $color_zinc_750;
+	}
+
+	&__search {
+		width: calc(100vw - 36rem);
+		height: var(--app-header-logo-size);
+		position: absolute;
+		top: 0;
+		left: calc(100% + 1px);
+		border-bottom: 1px solid $color_zinc_750;
+		background-color: $color_zinc_950;
+	}
+}

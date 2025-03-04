@@ -1,0 +1,64 @@
+.app-menu {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: $spacing_5;
+	padding: $spacing_5 $spacing_3 $spacing_5;
+	border-bottom: 1px solid $color_zinc_750;
+
+	&__label {
+		margin-bottom: $spacing_2;
+		font-weight: bold;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+
+	&__link {
+		@include font-small;
+
+		display: flex;
+		align-items: center;
+		padding: $spacing_2;
+		color: $color_zinc_50;
+		font-weight: 500;
+		text-decoration: none;
+		letter-spacing: 0.01em;
+		transition: background-color 0.2s;
+		border-radius: 0.4rem;
+
+		@include on-hover {
+			background-color: $color_zinc_900;
+		}
+
+		&.is-active {
+			background-color: $color_zinc_750;
+		}
+	}
+
+	&__link-count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		margin-left: 1rem;
+		position: relative;
+		color: $color_zinc_950;
+		font-size: 1.2rem;
+		border-radius: 1rem;
+		background-color: $color_zinc_50;
+
+		&.is-pending {
+			&::after {
+				content: '';
+				width: calc(100% + 2px);
+				height: calc(100% + 2px);
+				position: absolute;
+				animation: rotation 1s linear infinite;
+				border: 3px solid $color_zinc_500;
+				border-bottom-color: transparent;
+				border-radius: 50%;
+				inset: -1px;
+			}
+		}
+	}
+}

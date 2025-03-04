@@ -1,0 +1,19 @@
+.app-layout {
+	display: flex;
+	min-height: 100svh;
+
+	&__header {
+		width: 100%;
+		max-width: 36rem;
+		height: 100svh;
+		position: sticky;
+		top: 0;
+		left: 0;
+		border-right: 1px solid $color_zinc_750;
+	}
+
+	&__content {
+		flex: 1;
+		padding: ($spacing_9 + $spacing_4) $spacing_4 $spacing_4;
+	}
+}

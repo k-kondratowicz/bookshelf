@@ -1,0 +1,17 @@
+@mixin on-hover($selectors...) {
+	@if length($selectors) > 0 {
+		@at-root #{$selectors} {
+			@content;
+		}
+	}
+
+	&:hover {
+		@media (hover: hover) {
+			@content;
+		}
+	}
+
+	&:focus-visible {
+		@content;
+	}
+}
