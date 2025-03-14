@@ -11,8 +11,13 @@
 		height: 100%;
 		padding: $spacing_1 $spacing_3;
 		color: $color_text;
+		transition: background-color $transition_default;
 		border-radius: 0.4rem;
-		background-color: ($color_zinc_900);
+		background-color: $color_zinc_900;
+
+		@include on-focus {
+			background-color: $color_zinc_750;
+		}
 	}
 
 	&__trigger {
