@@ -43,9 +43,9 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
 	clearOAuth() {
 		set({
 			oauth: {
-				accessToken: '',
-				expiresAt: dayjs(),
-				tokenType: '',
+				accessToken: undefined,
+				expiresAt: undefined,
+				tokenType: undefined,
 			},
 		});
 
@@ -55,7 +55,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
 	isTokenValid: () => {
 		const oauth = get().oauth;
 
-		return !!oauth.accessToken && oauth.expiresAt.subtract(10, 'seconds').isAfter(dayjs(), 'seconds');
+		return !!oauth.accessToken && !!oauth.expiresAt?.subtract(1, 'seconds').isAfter(dayjs(), 'seconds');
 	},
 
 	hasAccessToken: () => !!get().oauth.accessToken,

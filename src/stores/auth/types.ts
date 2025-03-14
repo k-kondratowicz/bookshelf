@@ -3,9 +3,9 @@ import { Dayjs } from 'dayjs';
 
 export interface AuthStore {
 	oauth: {
-		accessToken: string;
-		expiresAt: Dayjs;
-		tokenType: string;
+		accessToken?: string;
+		expiresAt?: Dayjs;
+		tokenType?: string;
 	};
 
 	updateOAuth: (response: TokenResponse) => void;
