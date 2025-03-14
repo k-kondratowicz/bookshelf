@@ -1,0 +1,12 @@
+.table-row {
+	display: grid;
+	grid-template-columns: var(--table-layout, repeat(12, 1fr));
+	align-items: center;
+	margin-bottom: $spacing_1;
+	border-radius: 0.4rem;
+	background-color: rgba($color_zinc_500, 0.05);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

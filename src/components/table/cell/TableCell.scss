@@ -1,0 +1,20 @@
+.table-cell {
+	padding-inline: $spacing_1;
+	color: $color_zinc_250;
+
+	&--head {
+		@include font-small-alt;
+
+		color: $color_zinc_500;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		background-color: $color_bg;
+	}
+
+	&--default {
+		@include font-small;
+
+		padding-block: $spacing_1;
+	}
+}

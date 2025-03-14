@@ -15,8 +15,11 @@
 	}
 
 	&__reading-now {
+		display: flex;
 		flex: 1;
-		border: 1px solid $color_zinc_750;
-		border-radius: 0.4rem;
+		flex-direction: column;
+		gap: $spacing_2;
+		width: 100%;
+		max-width: 100%;
 	}
 }

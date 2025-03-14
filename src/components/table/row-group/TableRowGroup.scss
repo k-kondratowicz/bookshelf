@@ -1,0 +1,7 @@
+.table-row-group {
+	&--head {
+		margin-bottom: $spacing_2;
+		padding-bottom: $spacing_1;
+		border-bottom: 1px solid $color_zinc_500;
+	}
+}
