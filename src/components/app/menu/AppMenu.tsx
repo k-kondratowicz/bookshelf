@@ -23,7 +23,8 @@ export default function AppMenu() {
 					<NavLink
 						to={to}
 						className={({ isActive }) => `app-menu__link ${isActive ? 'is-active' : ''}`}
-						key={`nav-link-${to}`}>
+						key={`nav-link-${to}`}
+						viewTransition={true}>
 						<span>{label}</span>
 
 						{id !== undefined && (
