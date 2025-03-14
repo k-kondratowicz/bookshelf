@@ -14,7 +14,6 @@ import PrivateRoute from './layouts/helpers/PrivateRoute.tsx';
 import PublicRoute from './layouts/helpers/PublicRoute.tsx';
 import DashboardPage from './pages/dashboard/DashboardPage.tsx';
 import LoginPage from './pages/login/LoginPage.tsx';
-console.log(import.meta.env.V);
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
