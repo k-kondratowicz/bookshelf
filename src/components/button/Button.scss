@@ -3,6 +3,7 @@
 	align-items: center;
 	justify-content: center;
 	padding: $spacing_2;
+	font-weight: 500;
 	text-align: center;
 	transition: $transition_default;
 	transition-property: color, background-color, border-color;
@@ -42,5 +43,15 @@
 			border-color: $color_text;
 			background-color: $color_text;
 		}
+	}
+
+	&--small {
+		@include font-small-alt;
+
+		padding: $spacing_1;
+	}
+
+	&--large {
+		@include font-default;
 	}
 }
