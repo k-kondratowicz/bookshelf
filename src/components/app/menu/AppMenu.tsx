@@ -3,14 +3,15 @@ import './AppMenu.scss';
 import { NavLink } from 'react-router';
 
 import { NAV_LINKS } from '@/constants/nav';
-import { BookshelvesQueryDataItem, useBookshelvesListQuery } from '@/hooks/queries';
+import { useBookshelvesListQuery } from '@/hooks/queries';
+import { BookshelvesListItem } from '@/types/bookshelves';
 
-function getBookshelfCount(id: number, list?: BookshelvesQueryDataItem[]) {
-	return list?.find(item => item.id === id)?.volumeCount ?? '';
+function getBookshelfVolumeCount(id: number, list?: BookshelvesListItem[]) {
+	return list?.find(item => item.id === id)?.volumeCount ?? 0;
 }
 
 export default function AppMenu() {
-	const { data: response, isPending } = useBookshelvesListQuery();
+	const { data, isPending } = useBookshelvesListQuery();
 
 	return (
 		<nav className="app-menu" aria-labelledby="main-navigation">
@@ -29,7 +30,7 @@ export default function AppMenu() {
 
 						{id !== undefined && (
 							<span className={`app-menu__link-count ${isPending ? 'is-pending' : ''}`}>
-								{getBookshelfCount(id, response?.data.items)}
+								{getBookshelfVolumeCount(id, data?.items)}
 							</span>
 						)}
 					</NavLink>
