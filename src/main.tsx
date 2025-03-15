@@ -39,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
 								<Route path="to-read" element={<div>To read</div>} />
 								<Route path="have-read" element={<div>Have read</div>} />
 								<Route path="search" element={<div>Search</div>} />
+								<Route path="volume/:volumeId" element={<div>Volume Id</div>} />
 							</Route>
 						</Route>
 					</Routes>
