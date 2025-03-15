@@ -27,6 +27,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				additionalData: `@import '${path.resolve(cwd, './src/')}/sass/index.scss';`,
+				silenceDeprecations: ['import'],
 			},
 		},
 
