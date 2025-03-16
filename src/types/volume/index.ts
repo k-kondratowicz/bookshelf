@@ -1,8 +1,8 @@
 export interface VolumeInfoSimple {
 	title: string;
-	authors: string[];
-	publishedDate: string;
-	imageLinks: {
+	authors?: string[];
+	publishedDate?: string;
+	imageLinks?: {
 		thumbnail: string;
 	};
 }

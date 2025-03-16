@@ -23,6 +23,7 @@ export interface VolumesTableProps {
 export default function VolumesTable({ bookshelfId, page, maxResults, title, children }: VolumesTableProps) {
 	const query = useBookshelfVolumesQuery(bookshelfId, page, maxResults);
 	const { data, isPending } = query;
+	console.log(data);
 
 	const hasMoreVolumes = maxResults < (data?.totalItems ?? 0);
 

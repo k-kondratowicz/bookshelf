@@ -14,9 +14,11 @@ export default function VolumeHeader({ volume }: VolumeHeaderProps) {
 
 	return (
 		<Link to={`/volume/${volume.id}`} className="volume-header">
-			<div className="volume-header__visual">
-				<img src={imageLinks.thumbnail} alt="" className="volume-header__thumbnail" />
-			</div>
+			{imageLinks && (
+				<div className="volume-header__visual">
+					<img src={imageLinks.thumbnail} alt="" className="volume-header__thumbnail" />
+				</div>
+			)}
 
 			<div className="volume-header__info">
 				<h2 className="volume-header__title">{title}</h2>

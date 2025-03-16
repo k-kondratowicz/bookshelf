@@ -1,3 +1,3 @@
-export function parsePublishedDate(publishedDate: string) {
-	return publishedDate.slice(0, 4);
+export function parsePublishedDate(publishedDate?: string) {
+	return publishedDate?.slice(0, 4) || 'Unknown Year';
 }
