@@ -12,6 +12,7 @@ import queryClient from '@/tools/queryClient.ts';
 import AppLayout from './layouts/app/AppLayout.tsx';
 import PrivateRoute from './layouts/helpers/PrivateRoute.tsx';
 import PublicRoute from './layouts/helpers/PublicRoute.tsx';
+import BookshelfPage from './pages/bookshelf/BookshelfPage.tsx';
 import DashboardPage from './pages/dashboard/DashboardPage.tsx';
 import LoginPage from './pages/login/LoginPage.tsx';
 
@@ -34,10 +35,10 @@ createRoot(document.getElementById('root')!).render(
 						<Route element={<AppLayout />}>
 							<Route element={<PrivateRoute />}>
 								<Route path="dashboard" element={<DashboardPage />} />
-								<Route path="favorites" element={<div>Favorites</div>} />
-								<Route path="reading-now" element={<div>Reading now</div>} />
-								<Route path="to-read" element={<div>To read</div>} />
-								<Route path="have-read" element={<div>Have read</div>} />
+								<Route path="favorites" element={<BookshelfPage id={0} title="Favorites" />} />
+								<Route path="reading-now" element={<BookshelfPage id={3} title="Reading Now" />} />
+								<Route path="to-read" element={<BookshelfPage id={2} title="To Read" />} />
+								<Route path="have-read" element={<BookshelfPage id={4} title="Have Read" />} />
 								<Route path="search" element={<div>Search</div>} />
 								<Route path="volume/:volumeId" element={<div>Volume Id</div>} />
 							</Route>
