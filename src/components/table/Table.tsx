@@ -2,7 +2,7 @@ import './Table.scss';
 
 import { ReactNode } from 'react';
 
-import { uniqueId } from '@/tools/uniqueId';
+import { uniqueId } from '@/utils/uniqueId';
 
 import TableCell from './cell/TableCell';
 import TableRow from './row/TableRow';
