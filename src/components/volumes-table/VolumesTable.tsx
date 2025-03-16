@@ -1,3 +1,5 @@
+import './VolumesTable.scss';
+
 import { ReactNode } from 'react';
 
 import { useBookshelfVolumesQuery } from '@/hooks/queries';
@@ -17,10 +19,11 @@ export interface VolumesTableProps {
 	page: number;
 	maxResults: number;
 	title?: string;
+	subtitle?: string;
 	children?: ReactNode | ((props: Omit<VolumesTableChildrenData, 'children'>) => ReactNode);
 }
 
-export default function VolumesTable({ bookshelfId, page, maxResults, title, children }: VolumesTableProps) {
+export default function VolumesTable({ bookshelfId, page, maxResults, title, subtitle, children }: VolumesTableProps) {
 	const query = useBookshelfVolumesQuery(bookshelfId, page, maxResults);
 	const { data, isPending } = query;
 	console.log(data);
@@ -38,8 +41,10 @@ export default function VolumesTable({ bookshelfId, page, maxResults, title, chi
 	}
 
 	return (
-		<>
-			{title && <h2>{title}</h2>}
+		<div className="volumes-table">
+			{title && <h2 className="volumes-table__title">{title}</h2>}
+
+			{subtitle && <p className="volumes-table__subtitle">{subtitle}</p>}
 
 			<Table
 				layout={`1fr 6fr 4fr 1fr`}
@@ -52,7 +57,7 @@ export default function VolumesTable({ bookshelfId, page, maxResults, title, chi
 					{
 						key: 'title',
 						title: 'Title',
-						selector: row => <VolumeHeader volume={row} />,
+						selector: volume => <VolumeHeader volume={volume} />,
 					},
 					{
 						key: 'year',
@@ -62,7 +67,7 @@ export default function VolumesTable({ bookshelfId, page, maxResults, title, chi
 					{
 						key: 'actions',
 						title: `Actions`,
-						selector: row => <VolumeActionButton volume={row} />,
+						selector: volume => <VolumeActionButton volume={volume} />,
 					},
 				]}
 				data={data.items}
@@ -77,6 +82,6 @@ export default function VolumesTable({ bookshelfId, page, maxResults, title, chi
 						hasMoreVolumes,
 					})
 				: children}
-		</>
+		</div>
 	);
 }
