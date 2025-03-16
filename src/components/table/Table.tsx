@@ -20,7 +20,7 @@ export interface TableProps<T> {
 	layout: string;
 }
 
-export function Table<T>(props: TableProps<T>) {
+export default function Table<T>(props: TableProps<T>) {
 	const style = {
 		'--table-layout': props.layout,
 	};
