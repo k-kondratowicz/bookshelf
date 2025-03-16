@@ -8,7 +8,7 @@ export interface TeleportProps extends Required<PropsWithChildren> {
 	key?: PortalPameters[2];
 }
 
-export function Teleport(props: TeleportProps) {
+export default function Teleport(props: TeleportProps) {
 	const teleportTarget = props.container || document.body;
 
 	return createPortal(props.children, teleportTarget, props.key);

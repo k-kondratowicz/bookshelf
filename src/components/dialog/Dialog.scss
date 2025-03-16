@@ -1,5 +1,42 @@
 .dialog {
+	$self: &;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 	position: fixed;
-	inset: 0;
 	z-index: $z_index_modal;
+	inset: 0;
+
+	&__background {
+		position: absolute;
+		cursor: pointer;
+		background-color: rgba($color_zinc_950, 0.85);
+		backdrop-filter: blur(0.4rem);
+		inset: 0;
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		flex-direction: column-reverse;
+		width: calc(100% - #{$spacing_4});
+		height: auto;
+		padding: $spacing_3;
+		position: relative;
+		z-index: $z_index_base;
+		border-radius: 0.4rem;
+		background-color: $color_zinc_900;
+	}
+
+	&__close {
+		margin-left: auto;
+	}
+
+	&--small {
+		#{$self}__container {
+			max-width: 48rem;
+		}
+	}
 }

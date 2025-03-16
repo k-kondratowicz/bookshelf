@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import './Dialog.scss';
 
-import { Teleport } from '../teleport/Teleport';
+import { ReactNode, useEffect, useState } from 'react';
+
+import Teleport from '../teleport/Teleport';
 
 export interface DialogTriggerProps {
 	open: () => void;
@@ -8,15 +10,16 @@ export interface DialogTriggerProps {
 }
 
 export interface DialogProps {
-	triggerElement: React.ReactNode | ((props: DialogTriggerProps) => React.ReactNode);
-	children: React.ReactNode;
+	triggerElement: ReactNode | ((props: DialogTriggerProps) => ReactNode);
+	children: ReactNode | ((props: DialogTriggerProps) => ReactNode);
+	hideCloseButton?: boolean;
 	size?: 'small' | 'medium' | 'large';
 	isOpen?: boolean;
 	onClose?: () => void;
 	onOpen?: () => void;
 }
 
-export function Dialog(props: DialogProps) {
+export default function Dialog(props: DialogProps) {
 	const [isDialogOpen, setIsDialogOpen] = useState(!!props.isOpen);
 
 	useEffect(() => {
@@ -47,12 +50,21 @@ export function Dialog(props: DialogProps) {
 					<div className={`dialog dialog--${props.size || 'small'}`}>
 						<div className="dialog__background" onClick={close} />
 
-						<div className="dialog__content">
-							{props.children}
+						<div className="dialog__container">
+							<div className="dialog__content">
+								{typeof props.children === 'function'
+									? props.children({
+											open,
+											isOpen: isDialogOpen,
+										})
+									: props.children}
+							</div>
 
-							<button onClick={close} className="dialog__close">
-								Close
-							</button>
+							{!props.hideCloseButton && (
+								<button onClick={close} className="dialog__close">
+									❌<span className="visually-hidden">Close</span>
+								</button>
+							)}
 						</div>
 					</div>
 				</Teleport>
