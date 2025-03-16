@@ -3,6 +3,7 @@ import './VolumeHeader.scss';
 import { Link } from 'react-router';
 
 import { VolumeSimple } from '@/types/volume';
+import { parseAuthors } from '@/utils/parseAuthors';
 
 export interface VolumeHeaderProps {
 	volume: VolumeSimple;
@@ -19,7 +20,7 @@ export default function VolumeHeader({ volume }: VolumeHeaderProps) {
 
 			<div className="volume-header__info">
 				<h2 className="volume-header__title">{title}</h2>
-				<div className="volume-header__authors">{authors.join(', ')}</div>
+				<div className="volume-header__authors">{parseAuthors(authors)}</div>
 			</div>
 		</Link>
 	);
