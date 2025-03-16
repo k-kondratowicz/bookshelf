@@ -44,3 +44,8 @@ button {
 .visually-hidden {
 	@include visually-hidden;
 }
+
+::selection {
+	color: $color_zinc_50;
+	background-color: $color_zinc_750;
+}
