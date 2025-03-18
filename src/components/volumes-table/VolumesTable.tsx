@@ -6,7 +6,7 @@ import { useBookshelfVolumesQuery } from '@/hooks/queries';
 import { parsePublishedDate } from '@/utils/parsePublishedDate';
 
 import Table from '../table/Table';
-import VolumeActionButton from '../volume/action-button/VolumeActionButton';
+import VolumeActionsButton from '../volume/actions-button/VolumeActionsButton';
 import VolumeHeader from '../volume/header/VolumeHeader';
 
 export interface VolumesTableChildrenData extends Omit<VolumesTableProps, 'children' | 'title'> {
@@ -67,7 +67,7 @@ export default function VolumesTable({ bookshelfId, page, maxResults, title, sub
 					{
 						key: 'actions',
 						title: `Actions`,
-						selector: volume => <VolumeActionButton volume={volume} />,
+						selector: volume => <VolumeActionsButton volume={volume} />,
 					},
 				]}
 				data={data.items}

@@ -1,0 +1,28 @@
+.volume-actions {
+	&__heading {
+		@include font-h4;
+
+		margin-bottom: $spacing_2;
+	}
+
+	&__bookshelf-item {
+		display: flex;
+		gap: $spacing_1;
+		align-items: center;
+	}
+
+	&__buttons {
+		display: flex;
+		gap: $spacing_1;
+		justify-content: flex-end;
+		margin-top: $spacing_4;
+	}
+
+	&__fav {
+		margin-right: auto;
+	}
+
+	&__save {
+		min-width: 10rem;
+	}
+}
