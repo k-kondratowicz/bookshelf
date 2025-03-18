@@ -20,6 +20,11 @@
 			border-color: $color_zinc_750;
 			background-color: $color_zinc_900;
 		}
+
+		&[disabled] {
+			border-color: rgba($color_text, 0.25);
+			background-color: rgba($color_text, 0.5);
+		}
 	}
 
 	&--medium {
@@ -30,6 +35,11 @@
 		@include on-hover {
 			border-color: $color_zinc_900;
 			background-color: $color_zinc_900;
+		}
+
+		&[disabled] {
+			border-color: rgba($color_zinc_750, 0.25);
+			background-color: rgba($color_zinc_750, 0.5);
 		}
 	}
 
@@ -43,15 +53,21 @@
 			border-color: $color_text;
 			background-color: $color_text;
 		}
+
+
+		&[disabled] {
+			border-color: rgba($color_zinc_900, 0.25);
+			background-color: rgba($color_zinc_900, 0.5);
+		}
 	}
 
-	&--small {
+	&--small-size {
 		@include font-small-alt;
 
 		padding: $spacing_1;
 	}
 
-	&--large {
+	&--large-size {
 		@include font-base;
 	}
 }
