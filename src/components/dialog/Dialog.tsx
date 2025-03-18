@@ -6,6 +6,7 @@ import Teleport from '../teleport/Teleport';
 
 export interface DialogTriggerProps {
 	open: () => void;
+	close: () => void;
 	isOpen: boolean;
 }
 
@@ -41,13 +42,14 @@ export default function Dialog(props: DialogProps) {
 			{typeof props.triggerElement === 'function'
 				? props.triggerElement({
 						open,
+						close,
 						isOpen: isDialogOpen,
 					})
 				: props.triggerElement}
 
 			{isDialogOpen && (
 				<Teleport>
-					<div className={`dialog dialog--${props.size || 'small'}`}>
+					<div className={`dialog dialog--${props.size || 'small'}`} tabIndex={-1}>
 						<div className="dialog__background" onClick={close} />
 
 						<div className="dialog__container">
@@ -55,6 +57,7 @@ export default function Dialog(props: DialogProps) {
 								{typeof props.children === 'function'
 									? props.children({
 											open,
+											close,
 											isOpen: isDialogOpen,
 										})
 									: props.children}
