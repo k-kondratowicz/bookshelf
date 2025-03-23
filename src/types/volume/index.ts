@@ -7,10 +7,15 @@ export interface VolumeInfoSimple {
 	};
 }
 
+export interface VolumeSearchInfo {
+	textSnippet?: string;
+}
+
 export interface VolumeSimple {
 	kind: string;
 	id: string;
 	volumeInfo: VolumeInfoSimple;
+	searchInfo?: VolumeSearchInfo;
 }
 
 export interface VolumeFull extends VolumeSimple {
