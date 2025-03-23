@@ -1,0 +1,14 @@
+.volumes-wrapper {
+	&__title {
+		@include font-h2;
+
+		margin-bottom: $spacing_5;
+	}
+
+	&__subtitle {
+		@include font-h5;
+
+		margin-bottom: $spacing_3;
+		font-weight: normal;
+	}
+}

@@ -1,4 +1,4 @@
-import VolumesTable from '@/components/volumes-table/VolumesTable';
+import BookshelfVolumes from '@/components/bookshelf-volumes/BookshelfVolumes';
 
 export interface BookshelfPageProps {
 	id: number;
@@ -6,5 +6,5 @@ export interface BookshelfPageProps {
 }
 
 export default function BookshelfPage({ id, title }: BookshelfPageProps) {
-	return <VolumesTable bookshelfId={id} page={1} maxResults={10} title={title} />;
+	return <BookshelfVolumes bookshelfId={id} title={title} />;
 }

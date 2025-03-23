@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { API_VOLUME_FIELDS_LITE } from '@/constants/api';
 import api from '@/tools/api';
 import { BookshelfVolumes } from '@/types/bookshelf';
 
@@ -12,7 +13,7 @@ export function useBookshelfVolumesQuery(bookshelfId = 0, page = 1, maxResults =
 				params: {
 					maxResults,
 					startIndex: (page - 1) * maxResults,
-					fields: 'kind,totalItems,items(id,kind,volumeInfo(title,authors,publishedDate,imageLinks(thumbnail)))',
+					fields: API_VOLUME_FIELDS_LITE,
 				},
 			});
 		},
@@ -21,5 +22,7 @@ export function useBookshelfVolumesQuery(bookshelfId = 0, page = 1, maxResults =
 	return {
 		...query,
 		data: query.data?.data,
+		page,
+		maxResults,
 	};
 }

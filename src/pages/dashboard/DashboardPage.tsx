@@ -1,7 +1,7 @@
 import './DashboardPage.scss';
 
+import BookshelfVolumes from '@/components/bookshelf-volumes/BookshelfVolumes';
 import LinkButton from '@/components/link-button/LinkButton';
-import VolumesTable from '@/components/volumes-table/VolumesTable';
 
 export default function DashboardPage() {
 	return (
@@ -18,7 +18,7 @@ export default function DashboardPage() {
 			</p>
 
 			<div className="dashboard-page__reading-now">
-				<VolumesTable bookshelfId={3} page={1} maxResults={3} subtitle="Reading Now...">
+				<BookshelfVolumes bookshelfId={3} subtitle="Reading Now..." maxResults={3}>
 					{({ hasMoreVolumes }) =>
 						hasMoreVolumes && (
 							<LinkButton to="/reading-now" theme="light" size="small" className="dashboard-page__view-all">
@@ -26,7 +26,7 @@ export default function DashboardPage() {
 							</LinkButton>
 						)
 					}
-				</VolumesTable>
+				</BookshelfVolumes>
 			</div>
 		</div>
 	);
