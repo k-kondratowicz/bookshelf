@@ -28,6 +28,10 @@
 		padding-right: $spacing_2;
 	}
 
+	&__visual {
+		flex-shrink: 0;
+	}
+
 	&__title {
 		color: $color_zinc_50;
 	}

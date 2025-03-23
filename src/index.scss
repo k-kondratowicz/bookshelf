@@ -49,3 +49,7 @@ button {
 	color: $color_zinc_50;
 	background-color: $color_zinc_750;
 }
+
+input[type] {
+	box-sizing: border-box;
+}

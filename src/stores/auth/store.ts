@@ -12,9 +12,9 @@ console.log(oauthCookie);
 
 export const useAuthStore = create<AuthStore>((set, get) => ({
 	oauth: {
-		accessToken: (oauthCookie.accessToken as string) || '',
-		expiresAt: oauthCookie.expiresAt ? dayjs(oauthCookie.expiresAt) : dayjs(),
-		tokenType: (oauthCookie.tokenType as string) || '',
+		accessToken: oauthCookie?.accessToken,
+		expiresAt: oauthCookie?.expiresAt ? dayjs(oauthCookie.expiresAt) : undefined,
+		tokenType: oauthCookie?.tokenType,
 	},
 
 	updateOAuth({ access_token, expires_in, token_type }: TokenResponse) {
