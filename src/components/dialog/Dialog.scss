@@ -7,13 +7,21 @@
 	height: 100%;
 	position: fixed;
 	z-index: $z_index_modal;
+	visibility: hidden;
+	transition: $transition_default;
+	transition-property: opacity, visibility;
+	opacity: 0;
 	inset: 0;
+
+	&--is-animating-in {
+		visibility: visible;
+		opacity: 1;
+	}
 
 	&__background {
 		position: absolute;
 		cursor: pointer;
 		background-color: rgba($color_zinc_950, 0.85);
-		backdrop-filter: blur(0.4rem);
 		inset: 0;
 	}
 
