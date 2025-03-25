@@ -3,12 +3,20 @@
 	align-items: center;
 	justify-content: center;
 	padding: $spacing_2;
+	position: relative;
 	font-weight: 500;
 	text-align: center;
 	transition: $transition_default;
 	transition-property: color, background-color, border-color;
 	border: 1px solid;
 	border-radius: 0.4rem;
+
+	&__content {
+		&--is-hidden {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
 
 	&--light {
 		color: $color_bg;
@@ -17,12 +25,12 @@
 
 		@include on-hover {
 			color: $color_text;
-			border-color: $color_zinc_750;
-			background-color: $color_zinc_900;
+			border-color: $color_zinc_500;
+			background-color: $color_zinc_500;
 		}
 
 		&[disabled] {
-			border-color: rgba($color_text, 0.25);
+			border-color: transparent;
 			background-color: rgba($color_text, 0.5);
 		}
 	}
@@ -33,11 +41,12 @@
 		background-color: $color_zinc_750;
 
 		@include on-hover {
-			border-color: $color_zinc_900;
+			border-color: $color_zinc_750;
 			background-color: $color_zinc_900;
 		}
 
 		&[disabled] {
+			color: $color_zinc_250;
 			border-color: rgba($color_zinc_750, 0.25);
 			background-color: rgba($color_zinc_750, 0.5);
 		}
