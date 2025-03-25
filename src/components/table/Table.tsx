@@ -2,8 +2,6 @@ import './Table.scss';
 
 import { ReactNode } from 'react';
 
-import { uniqueId } from '@/utils/uniqueId';
-
 import TableCell from './cell/TableCell';
 import TableRow from './row/TableRow';
 import TableRowGroup from './row-group/TableRowGroup';
@@ -30,7 +28,7 @@ export default function Table<T>(props: TableProps<T>) {
 			<TableRowGroup header>
 				<TableRow>
 					{props.columns.map(column => (
-						<TableCell header key={`${column.key}-head-${uniqueId()}`}>
+						<TableCell header key={`${column.key}-head`}>
 							{column.title}
 						</TableCell>
 					))}
@@ -41,7 +39,7 @@ export default function Table<T>(props: TableProps<T>) {
 				{props.data.map((row: T, index: number) => (
 					<TableRow key={index}>
 						{props.columns.map(column => (
-							<TableCell key={`${column.key}-${uniqueId()}`}>{column.selector(row, index)}</TableCell>
+							<TableCell key={`${column.key}-body`}>{column.selector(row, index)}</TableCell>
 						))}
 					</TableRow>
 				))}
