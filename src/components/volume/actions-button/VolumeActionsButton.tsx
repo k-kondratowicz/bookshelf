@@ -1,10 +1,9 @@
 import './VolumeActionsButton.scss';
 
 import Button from '@/components/button/Button';
+import Dialog from '@/components/dialog/Dialog';
+import VolumeActions from '@/components/volume/actions/VolumeActions';
 import { VolumeSimple } from '@/types/volume';
-
-import Dialog from '../../dialog/Dialog';
-import VolumeActions from '../actions/VolumeActions';
 
 export interface VolumeActionsButtonProps {
 	volume: VolumeSimple;
