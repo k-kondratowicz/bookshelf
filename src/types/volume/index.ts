@@ -1,10 +1,17 @@
+export interface VolumeImages {
+	thumbnail: string;
+	small?: string;
+	medium?: string;
+	large?: string;
+	smallThumbnail?: string;
+	extraLarge?: string;
+}
+
 export interface VolumeInfoSimple {
 	title: string;
 	authors?: string[];
 	publishedDate?: string;
-	imageLinks?: {
-		thumbnail: string;
-	};
+	imageLinks?: VolumeImages;
 }
 
 export interface VolumeSearchInfo {
