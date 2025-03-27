@@ -9,11 +9,15 @@ Bookshelf utilizes the Google Books API to fetch book data. The API provides acc
 
 ## Todo
 
-- Implement a basic text search functionality
+- ~Implement a basic text search functionality~
 - Implement search by barcode (ISBN lookup).
 - Add actions for volumes:
   - Move between bookshelves
   - Add to favorites
 - Implement a single volume view with detailed information
+- Implement skeletons
+- Implement pagination
+- Use CSS Modules
+- Error handling
 
 ![Preview](./preview.webp)
