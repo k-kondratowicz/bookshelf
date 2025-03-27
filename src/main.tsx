@@ -16,6 +16,7 @@ import BookshelfPage from './pages/bookshelf/BookshelfPage.tsx';
 import DashboardPage from './pages/dashboard/DashboardPage.tsx';
 import LoginPage from './pages/login/LoginPage.tsx';
 import SearchPage from './pages/search/SearchPage.tsx';
+import VolumePage from './pages/volume/VolumePage.tsx';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -41,7 +42,7 @@ createRoot(document.getElementById('root')!).render(
 								<Route path="to-read" element={<BookshelfPage id={2} title="To Read" />} />
 								<Route path="have-read" element={<BookshelfPage id={4} title="Have Read" />} />
 								<Route path="search" element={<SearchPage />} />
-								<Route path="volume/:volumeId" element={<div>Volume Id</div>} />
+								<Route path="volume/:volumeId" element={<VolumePage />} />
 							</Route>
 						</Route>
 					</Routes>

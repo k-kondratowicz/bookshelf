@@ -18,17 +18,19 @@ export interface VolumeSimple {
 	searchInfo?: VolumeSearchInfo;
 }
 
+export interface VolumeIndustryIdentifier {
+	type: string;
+	identifier: string;
+}
+
 export interface VolumeFull extends VolumeSimple {
 	volumeInfo: VolumeInfoSimple & {
-		publisher: string;
-		description: string;
+		publisher?: string;
+		description?: string;
 		pageCount: number;
-		printType: string;
+		printType?: string;
 		categories: string[];
-		industryIdentifiers: {
-			type: string;
-			identifier: string;
-		}[];
+		industryIdentifiers?: VolumeIndustryIdentifier[];
 		language: string;
 	};
 }
