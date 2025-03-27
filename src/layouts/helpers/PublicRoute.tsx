@@ -4,9 +4,9 @@ import { useAuthStore } from '@/stores/auth';
 
 export default function PublicRoute() {
 	const location = useLocation();
-	const oauth = useAuthStore(state => state.oauth);
+	const isTokenValid = useAuthStore(state => state.isTokenValid);
 
-	if (location.pathname.includes('/login') && oauth.accessToken) {
+	if (location.pathname.includes('/login') && isTokenValid()) {
 		return <Navigate to="/dashboard" />;
 	}
 
