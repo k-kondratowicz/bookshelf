@@ -1,10 +1,10 @@
 import './Dialog.scss';
 
 import classNames from 'classnames';
-import { ReactNode, SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { ReactNode, SyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 import Teleport from '../teleport/Teleport';
-import DialogBackdrop from './backdrop/DialogBackdrop';
+// import DialogBackdrop from './backdrop/DialogBackdrop';
 
 export interface DialogTriggerProps {
 	open: () => void;
@@ -26,7 +26,7 @@ export default function Dialog(props: DialogProps) {
 	const [isDialogOpen, setIsDialogOpen] = useState(!!props.isOpen);
 	const [isAnimatingIn, setIsAnimatingIn] = useState(false);
 	const [isAnimatingOut, setIsAnimatingOut] = useState(false);
-	const [dialogRoot, setDialogRoot] = useState<HTMLDivElement | null>(null);
+	const dialogRoot = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		if (props.isOpen) {
@@ -40,12 +40,15 @@ export default function Dialog(props: DialogProps) {
 	}, [props.isOpen]);
 
 	useEffect(() => {
-		if (!dialogRoot) {
+		if (!isDialogOpen) {
 			return;
 		}
 
 		setIsAnimatingIn(true);
-	}, [dialogRoot]);
+		setTimeout(() => {
+			dialogRoot.current?.focus();
+		}, 100);
+	}, [isDialogOpen]);
 
 	const open = useCallback(() => {
 		setIsDialogOpen(true);
@@ -77,7 +80,7 @@ export default function Dialog(props: DialogProps) {
 
 			{isDialogOpen && (
 				<Teleport>
-					<DialogBackdrop />
+					{/* <DialogBackdrop /> */}
 
 					<div
 						className={classNames('dialog', [
@@ -89,7 +92,7 @@ export default function Dialog(props: DialogProps) {
 						])}
 						onTransitionEnd={handleTransitionEnd}
 						tabIndex={-1}
-						ref={setDialogRoot}>
+						ref={dialogRoot}>
 						<div className="dialog__background" onClick={close} />
 
 						<div className="dialog__container">

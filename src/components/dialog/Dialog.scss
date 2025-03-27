@@ -15,13 +15,14 @@
 
 	&--is-animating-in {
 		visibility: visible;
+		transition: opacity $transition_default, visibility 0s;
 		opacity: 1;
 	}
 
 	&__background {
 		position: absolute;
 		cursor: pointer;
-		background-color: rgba($color_zinc_950, 0.85);
+		background-color: rgba($color_zinc_950, 0.95);
 		inset: 0;
 	}
 
