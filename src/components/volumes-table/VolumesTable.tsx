@@ -2,7 +2,7 @@ import './VolumesTable.scss';
 
 import Table from '@/components/table/Table';
 import VolumeActionsButton from '@/components/volume/actions-button/VolumeActionsButton';
-import VolumeHeader from '@/components/volume/header/VolumeHeader';
+import VolumeLink from '@/components/volume/link/VolumeLink';
 import { VolumeSimple } from '@/types/volume';
 import { parsePublishedDate } from '@/utils/parsePublishedDate';
 
@@ -23,7 +23,7 @@ export default function VolumesTable({ data }: VolumesTableProps) {
 				{
 					key: 'title',
 					title: 'Title',
-					selector: volume => <VolumeHeader volume={volume} />,
+					selector: volume => <VolumeLink volume={volume} />,
 				},
 				{
 					key: 'year',

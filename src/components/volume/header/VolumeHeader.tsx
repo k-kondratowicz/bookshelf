@@ -1,29 +1,27 @@
 import './VolumeHeader.scss';
 
-import { Link } from 'react-router';
-
-import { VolumeSimple } from '@/types/volume';
+import { VolumeFull, VolumeSimple } from '@/types/volume';
 import { parseAuthors } from '@/utils/parseAuthors';
 
 export interface VolumeHeaderProps {
-	volume: VolumeSimple;
+	volume: VolumeSimple | VolumeFull;
+	titleSize?: 'small' | 'medium' | 'large';
+	authorsSize?: 'small' | 'large';
+	className?: string;
 }
 
-export default function VolumeHeader({ volume }: VolumeHeaderProps) {
-	const { imageLinks, title, authors } = volume.volumeInfo;
+export default function VolumeHeader({
+	volume,
+	titleSize = 'small',
+	authorsSize = 'small',
+	className,
+}: VolumeHeaderProps) {
+	const { title, authors } = volume.volumeInfo;
 
 	return (
-		<Link to={`/volume/${volume.id}`} className="volume-header">
-			{imageLinks && (
-				<div className="volume-header__visual">
-					<img src={imageLinks.thumbnail} alt="" className="volume-header__thumbnail" loading="lazy" />
-				</div>
-			)}
-
-			<div className="volume-header__info">
-				<h2 className="volume-header__title">{title}</h2>
-				<div className="volume-header__authors">{parseAuthors(authors)}</div>
-			</div>
-		</Link>
+		<div className={`volume-header ${className || ''}`}>
+			<h2 className={`volume-header__title volume-header__title--${titleSize}`}>{title}</h2>
+			<div className={`volume-header__authors volume-header__authors--${authorsSize}`}>{parseAuthors(authors)}</div>
+		</div>
 	);
 }
