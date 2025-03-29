@@ -1,0 +1,9 @@
+.volume-publisher {
+	&__name {
+		@include font-h6;
+
+		margin-bottom: $spacing_2;
+		padding-bottom: $spacing_2;
+		border-bottom: 1px solid $color_zinc_750;
+	}
+}

@@ -20,6 +20,10 @@
 			@include font-small-alt;
 		}
 
+		&--medium {
+			@include font-small;
+		}
+
 		&--large {
 			@include font-base;
 		}

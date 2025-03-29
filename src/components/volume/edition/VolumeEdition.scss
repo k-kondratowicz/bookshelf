@@ -1,17 +1,7 @@
 .volume-edition {
-	&__title {
-		margin-bottom: $spacing_1;
-	}
-
-	&__inner {
-		padding: $spacing_2;
-		border: 1px solid $color_zinc_750;
-		border-radius: 0.4rem;
-	}
-
 	&__details {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		gap: $spacing_2;
 	}
 
@@ -22,8 +12,6 @@
 	}
 
 	&__details-value {
-		@include font-small;
-
 		&--print-type {
 			text-transform: lowercase;
 

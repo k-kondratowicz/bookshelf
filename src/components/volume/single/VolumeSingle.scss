@@ -1,7 +1,33 @@
 .volume-single {
 	&__header {
 		margin-bottom: $spacing_4;
+		padding-right: $spacing_12;
 		padding-bottom: $spacing_2;
+		position: relative;
 		border-bottom: 1px solid $color_zinc_750;
+	}
+
+	&__thumbnail {
+		width: auto;
+		height: 6.7rem;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: $spacing_3;
+		align-items: flex-start;
+	}
+
+	&__side {
+		display: flex;
+		flex-direction: column;
+		gap: $spacing_3;
+		position: sticky;
+		top: $spacing_12;
+		left: 0;
 	}
 }

@@ -1,0 +1,17 @@
+.volume-info-box {
+	&__title {
+		@include font-small-alt;
+
+		margin-bottom: $spacing_1;
+		padding-left: $spacing_1;
+		font-weight: 500;
+	}
+
+	&__inner {
+		@include font-small-alt2;
+
+		padding: $spacing_2;
+		border: 1px solid $color_zinc_750;
+		border-radius: 0.4rem;
+	}
+}

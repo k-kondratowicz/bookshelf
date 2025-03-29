@@ -1,0 +1,40 @@
+.wysiwyg-content {
+	i {
+		font-style: italic;
+	}
+
+	ul,
+	ol,
+	p {
+		&:not(:first-child) {
+			margin-top: 0.5em;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 1em;
+		}
+	}
+
+	ul,
+	ol {
+		padding-left: 1em;
+
+		li {
+			& + & {
+				margin-top: 0.25em;
+			}
+		}
+	}
+
+	ul {
+		list-style: disc;
+	}
+
+	ol {
+		list-style: decimal;
+	}
+
+	b {
+		font-weight: 600;
+	}
+}
