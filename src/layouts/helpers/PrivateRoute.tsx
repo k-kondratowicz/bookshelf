@@ -3,9 +3,9 @@ import { Navigate, Outlet } from 'react-router';
 import { useAuthStore } from '@/stores/auth';
 
 export default function PrivateRoute() {
-	const isTokenValid = useAuthStore(state => state.isTokenValid);
+	const oauth = useAuthStore(state => state.oauth);
 
-	if (!isTokenValid()) {
+	if (!oauth.accessToken) {
 		return <Navigate to="/login" />;
 	}
 
