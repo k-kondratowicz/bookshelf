@@ -29,7 +29,7 @@ export default function VolumeSingle({ volumeId }: VolumeSingleProps) {
 	return (
 		<div className="volume-single">
 			<VolumeHeader volume={volume} titleSize="large" authorsSize="medium" className="volume-single__header">
-				{volume.volumeInfo.imageLinks.thumbnail && (
+				{volume.volumeInfo.imageLinks?.thumbnail && (
 					<VolumeThumbnail
 						size="auto"
 						thumbnailUrl={volume.volumeInfo.imageLinks.thumbnail}
