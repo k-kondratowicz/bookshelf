@@ -5,5 +5,5 @@ module.exports = {
 	printWidth: 120,
 	htmlWhitespaceSensitivity: 'ignore',
 	arrowParens: 'avoid',
-	jsxBracketSameLine: true
+	jsxBracketSameLine: false
 };
