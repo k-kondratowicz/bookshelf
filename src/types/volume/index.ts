@@ -14,6 +14,16 @@ export interface VolumeInfoSimple {
 	imageLinks?: VolumeImages;
 }
 
+export interface VolumeInfoFull extends VolumeInfoSimple {
+	publisher?: string;
+	description?: string;
+	pageCount: number;
+	printType?: string;
+	categories: string[];
+	industryIdentifiers?: VolumeIndustryIdentifier[];
+	language: string;
+}
+
 export interface VolumeSearchInfo {
 	textSnippet?: string;
 }
@@ -31,13 +41,5 @@ export interface VolumeIndustryIdentifier {
 }
 
 export interface VolumeFull extends VolumeSimple {
-	volumeInfo: VolumeInfoSimple & {
-		publisher?: string;
-		description?: string;
-		pageCount: number;
-		printType?: string;
-		categories: string[];
-		industryIdentifiers?: VolumeIndustryIdentifier[];
-		language: string;
-	};
+	volumeInfo: VolumeInfoFull;
 }
