@@ -3,6 +3,10 @@
 
 	$self: &;
 
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
 	&__logo {
 		@include font-h4;
 
@@ -23,5 +27,13 @@
 		left: calc(100% + 1px);
 		border-bottom: 1px solid $color_zinc_750;
 		background-color: $color_zinc_950;
+	}
+
+	&__logout {
+		width: auto;
+		max-width: calc(100% - #{$spacing_3 * 2});
+		margin-inline: $spacing_3;
+		margin-block: auto $spacing_3;
+		margin-right: auto;
 	}
 }
