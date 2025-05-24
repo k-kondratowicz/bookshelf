@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from 'react';
 
 import Button from '@/components/button/Button';
 import { NAV_LINKS } from '@/constants/nav';
-import { useAddToFavMutation, useMoveVolumeMutation } from '@/hooks/mutations';
+import { useAddToFavMutation, useMoveVolumeMutation } from '@/hooks/queries/mutations';
 import { VolumeSimple } from '@/types/volume';
 
 export interface VolumeActionsProps {
@@ -104,7 +104,8 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 					disabled={!selectedBookshelf}
 					className="volume-actions__save"
 					onClick={handleMoveVolume}
-					loading={isActionPending}>
+					loading={isActionPending}
+				>
 					Save
 				</Button>
 			</div>
