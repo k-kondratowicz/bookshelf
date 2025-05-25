@@ -6,5 +6,10 @@ export interface BookshelfPageProps {
 }
 
 export default function BookshelfPage({ id, title }: BookshelfPageProps) {
-	return <BookshelfVolumes bookshelfId={id} title={title} />;
+	return (
+		<>
+			<title>{`${title} | Bookshelf`}</title>
+			<BookshelfVolumes bookshelfId={id} title={title} />
+		</>
+	);
 }
