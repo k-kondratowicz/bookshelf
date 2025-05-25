@@ -24,7 +24,6 @@ export default function VolumeSingle({ volumeId }: VolumeSingleProps) {
 		// todo: error handling & redirect
 		return null;
 	}
-	console.log(volume);
 
 	return (
 		<div className="volume-single">
