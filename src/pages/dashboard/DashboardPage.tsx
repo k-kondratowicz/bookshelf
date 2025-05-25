@@ -18,9 +18,9 @@ export default function DashboardPage() {
 			</p>
 
 			<div className="dashboard-page__reading-now">
-				<BookshelfVolumes bookshelfId={3} subtitle="Reading Now..." maxResults={3}>
-					{({ hasMoreVolumes }) =>
-						hasMoreVolumes && (
+				<BookshelfVolumes bookshelfId={3} showPagination={false} subtitle="Reading Now..." maxResults={3}>
+					{({ query }) =>
+						query.hasMoreVolumes && (
 							<LinkButton to="/reading-now" theme="light" size="small" className="dashboard-page__view-all">
 								View All
 							</LinkButton>
