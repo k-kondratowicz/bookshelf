@@ -21,7 +21,7 @@ export default function BookshelfVolumes({
 	title,
 	subtitle,
 	bookshelfId,
-	maxResults = 2,
+	maxResults = 10,
 	showPagination = true,
 	children,
 }: BookshelfVolumesProps) {
