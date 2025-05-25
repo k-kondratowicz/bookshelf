@@ -1,7 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function usePagination(pageStart = 1) {
 	const [page, setPage] = useState(pageStart);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, [page]);
 
 	function nextPage() {
 		setPage(prev => prev + 1);
