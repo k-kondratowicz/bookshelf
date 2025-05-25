@@ -6,5 +6,11 @@ export default function SearchPage() {
 	const [searchParams] = useSearchParams();
 	const searchQuery = searchParams.get('q');
 
-	return <SearchVolumes searchQuery={searchQuery} />;
+	return (
+		<>
+			<title>Search Results | Bookshelf</title>
+			{searchQuery && <SearchVolumes searchQuery={searchQuery} />}
+			{!searchQuery && <p className="search-page__empty">Please enter a search query.</p>}
+		</>
+	);
 }
