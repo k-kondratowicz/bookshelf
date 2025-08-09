@@ -1,6 +1,7 @@
 import './AppSearch.scss';
 
 import { useIsFetching } from '@tanstack/react-query';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 import Button from '@/components/button/Button';
@@ -10,6 +11,7 @@ export default function AppSearch() {
 	const isSearchPending = useIsFetching({
 		queryKey: ['volumes-search'],
 	});
+	const currentSearchQuery = useRef<string>(null);
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -22,13 +24,15 @@ export default function AppSearch() {
 		const formData = new FormData(form);
 		const searchQuery = formData.get('q');
 
-		if (!searchQuery || typeof searchQuery !== 'string') {
+		if (!searchQuery || typeof searchQuery !== 'string' || currentSearchQuery.current === searchQuery) {
 			return;
 		}
 
+		currentSearchQuery.current = searchQuery;
+
 		/* TODO: Prefetch search volumes */
 
-		navigate(`/search?q=${encodeURI(searchQuery)}`);
+		return navigate(`/search?q=${encodeURI(searchQuery)}`);
 	}
 
 	return (
