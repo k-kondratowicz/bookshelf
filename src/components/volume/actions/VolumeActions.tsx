@@ -1,11 +1,10 @@
 import './VolumeActions.scss';
 
-import to from 'await-to-js';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 
 import Button from '@/components/button/Button';
 import { NAV_LINKS } from '@/constants/nav';
-import { useAddToFavMutation, useMoveVolumeMutation } from '@/hooks/queries/mutations';
+import { useVolumeActions } from '@/hooks/volume/useVolumeActions';
 import { VolumeSimple } from '@/types/volume';
 
 export interface VolumeActionsProps {
@@ -15,30 +14,21 @@ export interface VolumeActionsProps {
 
 const MOVE_TO_ACTIONS = NAV_LINKS.filter(link => link.id !== undefined && link.id !== 0);
 
-// todo: single responsibility principle
-
 export default function VolumeActions({ volume, close }: VolumeActionsProps) {
-	const moveToMutation = useMoveVolumeMutation();
-	const addToFavMutation = useAddToFavMutation();
 	const selectedBookshelf = useRef<string>(null);
 
-	const isActionPending = moveToMutation.isPending || addToFavMutation.isPending;
+	const { isAnyActionPending, moveVolume, addToFavourite } = useVolumeActions(volume.id);
 
 	function handleRadioChange(e: ChangeEvent<HTMLInputElement>) {
 		selectedBookshelf.current = e.target.value;
 	}
 
 	async function handleMoveVolume() {
-		if (!selectedBookshelf || isActionPending) {
+		if (!selectedBookshelf.current || isAnyActionPending) {
 			return;
 		}
 
-		const [err] = await to(
-			moveToMutation.mutateAsync({
-				volumeId: volume.id,
-				bookshelfId: selectedBookshelf.current,
-			}),
-		);
+		const [err] = await moveVolume(selectedBookshelf.current);
 
 		if (err) {
 			// todo: show error message
@@ -53,15 +43,11 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 	}
 
 	async function handleAddToFav() {
-		if (isActionPending) {
+		if (isAnyActionPending) {
 			return;
 		}
 
-		const [err] = await to(
-			addToFavMutation.mutateAsync({
-				volumeId: volume.id,
-			}),
-		);
+		const [err] = await addToFavourite();
 
 		if (err) {
 			// todo: show error message
@@ -88,13 +74,13 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 			))}
 
 			<div className="volume-actions__buttons">
-				<Button theme="medium" className="volume-actions__fav" onClick={handleAddToFav} loading={isActionPending}>
+				<Button theme="medium" className="volume-actions__fav" onClick={handleAddToFav} loading={isAnyActionPending}>
 					❤️
 					<span className="visually-hidden">Add to favorites</span>
 				</Button>
 
 				{close && (
-					<Button theme="medium" onClick={close} className="volume-actions__cancel" disabled={isActionPending}>
+					<Button theme="medium" onClick={close} className="volume-actions__cancel" disabled={isAnyActionPending}>
 						Cancel
 					</Button>
 				)}
@@ -104,7 +90,7 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 					disabled={!selectedBookshelf}
 					className="volume-actions__save"
 					onClick={handleMoveVolume}
-					loading={isActionPending}
+					loading={isAnyActionPending}
 				>
 					Save
 				</Button>

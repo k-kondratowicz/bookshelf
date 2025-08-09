@@ -3,13 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import api from '@/tools/api';
 import queryClient from '@/tools/queryClient';
 
-export interface AddToFavMutationProps {
-	volumeId: string;
-}
-
-export function useAddToFavMutation() {
-	const bookshelfId = 0;
-
+export function useAddVolumeToBookshelfMutation(bookshelfId: number) {
 	const mutation = useMutation({
 		onSuccess() {
 			return Promise.all([
@@ -17,10 +11,9 @@ export function useAddToFavMutation() {
 				queryClient.invalidateQueries({ queryKey: ['bookshelves-list'] }),
 			]);
 		},
-		mutationFn: ({ volumeId }: AddToFavMutationProps) => {
+		mutationFn: (volumeId: string) => {
 			return api.post(`/mylibrary/bookshelves/${bookshelfId}/addVolume`, {
 				volumeId,
-				volumePosition: 0,
 			});
 		},
 	});
