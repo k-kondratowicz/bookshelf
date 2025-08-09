@@ -1,7 +1,7 @@
 import './VolumeActions.scss';
 
 import to from 'await-to-js';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 
 import Button from '@/components/button/Button';
 import { NAV_LINKS } from '@/constants/nav';
@@ -20,12 +20,12 @@ const MOVE_TO_ACTIONS = NAV_LINKS.filter(link => link.id !== undefined && link.i
 export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 	const moveToMutation = useMoveVolumeMutation();
 	const addToFavMutation = useAddToFavMutation();
-	const [selectedBookshelf, setSelectedBookshelf] = useState<string>();
+	const selectedBookshelf = useRef<string>(null);
 
 	const isActionPending = moveToMutation.isPending || addToFavMutation.isPending;
 
 	function handleRadioChange(e: ChangeEvent<HTMLInputElement>) {
-		setSelectedBookshelf(e.target.value);
+		selectedBookshelf.current = e.target.value;
 	}
 
 	async function handleMoveVolume() {
@@ -36,7 +36,7 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 		const [err] = await to(
 			moveToMutation.mutateAsync({
 				volumeId: volume.id,
-				bookshelfId: selectedBookshelf,
+				bookshelfId: selectedBookshelf.current,
 			}),
 		);
 
