@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
 import { API_VOLUME_FIELDS_LITE } from '@/constants/api';
 import { usePagination } from '@/hooks/pagination';
@@ -6,8 +7,13 @@ import api from '@/tools/api';
 
 export interface VolumesQueryWithPaginationOptions {
 	endpoint: string;
-	queryKey: (page: number, maxResults: number, endpoint: string, params?: Record<string, any>) => (string | number)[];
-	params?: Record<string, any>;
+	queryKey: (
+		page: number,
+		maxResults: number,
+		endpoint: VolumesQueryWithPaginationOptions['endpoint'],
+		params?: VolumesQueryWithPaginationOptions['params'],
+	) => (string | number)[];
+	params?: Record<string, string | number>;
 	page?: number;
 	maxResults?: number;
 }
@@ -26,10 +32,10 @@ export function useVolumesQueryWithPagination<T extends { totalItems: number }>(
 		queryFn: () => {
 			return api.get<T>(endpoint, {
 				params: {
+					fields: API_VOLUME_FIELDS_LITE,
 					...(params || {}),
 					maxResults,
 					startIndex: (currentPage - 1) * maxResults,
-					fields: API_VOLUME_FIELDS_LITE,
 				},
 			});
 		},
@@ -37,7 +43,8 @@ export function useVolumesQueryWithPagination<T extends { totalItems: number }>(
 
 	const data = query.data?.data;
 	const totalItems = data?.totalItems ?? 0;
-	const hasMoreVolumes = hasMoreResults(totalItems, maxResults);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const hasMoreVolumes = useMemo(() => hasMoreResults(totalItems, maxResults), [totalItems, maxResults]);
 
 	return {
 		...query,
