@@ -29,7 +29,13 @@ export default function BookshelfVolumes({
 	const { data, isPending, setPage, page, totalItems } = query;
 
 	return (
-		<VolumesWrapper title={title} subtitle={subtitle} data={data?.items} isDataPending={isPending}>
+		<VolumesWrapper
+			title={title}
+			subtitle={subtitle}
+			data={data?.items}
+			isDataPending={isPending}
+			maxResults={maxResults}
+		>
 			{showPagination && totalItems > maxResults && (
 				<Pagination currentPage={page} maxResults={maxResults} totalItems={totalItems} onPageChange={setPage} />
 			)}
