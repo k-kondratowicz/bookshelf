@@ -1,6 +1,7 @@
 import './VolumeActions.scss';
 
 import { ChangeEvent, useRef } from 'react';
+import { toast } from 'react-toastify';
 
 import Button from '@/components/button/Button';
 import { NAV_LINKS } from '@/constants/nav';
@@ -31,14 +32,13 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 		const [err] = await moveVolume(selectedBookshelf.current);
 
 		if (err) {
-			// todo: show error message
+			toast.success('Failed to move volume');
 			console.error(err);
 
 			return;
 		}
 
-		// todo: show success message
-
+		toast.success('Volume moved successfully');
 		close?.();
 	}
 
@@ -50,13 +50,13 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 		const [err] = await addToFavourite();
 
 		if (err) {
-			// todo: show error message
+			toast.error('Failed to add volume to favorites');
 			console.error(err);
 
 			return;
 		}
 
-		// todo: show success message
+		toast.success('Volume added to favorites');
 	}
 
 	return (

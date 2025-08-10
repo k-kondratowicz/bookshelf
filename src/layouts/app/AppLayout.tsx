@@ -3,6 +3,7 @@ import './AppLayout.scss';
 import { Outlet } from 'react-router';
 
 import AppHeader from '@/components/app/header/AppHeader';
+import AppToast from '@/components/app/toast/AppToast';
 
 export default function AppLayout() {
 	return (
@@ -14,6 +15,8 @@ export default function AppLayout() {
 			<main className="app-layout__content">
 				<Outlet />
 			</main>
+
+			<AppToast />
 		</div>
 	);
 }

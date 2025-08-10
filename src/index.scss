@@ -3,6 +3,10 @@
 
 :root {
 	--header-height: 6.4rem;
+	--toastify-color-dark: #{$color_zinc_900};
+	--toastify-color-error: #{rgba($color_red_500, 0.75)};
+	--toastify-color-success: #{rgba($color_green_500, 0.75)};
+	--toastify-color-warning: #{rgba($color_amber_250, 0.75)};
 }
 
 html {
