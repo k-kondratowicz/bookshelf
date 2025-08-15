@@ -16,9 +16,9 @@ Bookshelf utilizes the Google Books API to fetch book data. The API provides acc
   - ~Move between bookshelves~
   - ~Add to favorites~
 - ~Implement a single volume view with detailed information~
-- ~Implement skeletons~
+- Implement skeletons
 - ~Implement pagination~
-- Use CSS Modules
+- ~Use CSS Modules~
 - Error handling
 
 ![Preview](./preview.webp)
