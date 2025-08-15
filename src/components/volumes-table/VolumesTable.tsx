@@ -1,5 +1,3 @@
-import './VolumesTable.scss';
-
 import Table from '@/components/table/Table';
 import VolumeActionsButton from '@/components/volume/actions-button/VolumeActionsButton';
 import VolumeLink from '@/components/volume/link/VolumeLink';

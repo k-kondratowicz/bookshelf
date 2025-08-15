@@ -1,13 +1,13 @@
-import './DefaultLayout.scss';
-
 import { Outlet } from 'react-router';
 
 import AppToast from '@/components/app/toast/AppToast';
 
+import styles from './DefaultLayout.module.scss';
+
 export default function DefaultLayout() {
 	return (
-		<div className="default-layout">
-			<main className="default-layout__content">
+		<div>
+			<main className={styles.content}>
 				<Outlet />
 			</main>
 

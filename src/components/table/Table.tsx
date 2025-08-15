@@ -1,10 +1,9 @@
-import './Table.scss';
-
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 
 import TableCell from './cell/TableCell';
 import TableRow from './row/TableRow';
 import TableRowGroup from './row-group/TableRowGroup';
+import styles from './Table.module.scss';
 
 export interface TableColumnProps<T> {
 	key: string;
@@ -18,13 +17,13 @@ export interface TableProps<T> {
 	layout: string;
 }
 
-export default function Table<T>(props: TableProps<T>) {
+export default function Table<T extends { id: string | number }>(props: TableProps<T>) {
 	const style = {
 		'--table-layout': props.layout,
 	};
 
 	return (
-		<div role="table" className="table" style={style}>
+		<div role="table" className={styles.table} style={style}>
 			<TableRowGroup header>
 				<TableRow>
 					{props.columns.map(column => (
@@ -37,7 +36,7 @@ export default function Table<T>(props: TableProps<T>) {
 
 			<TableRowGroup>
 				{props.data.map((row: T, index: number) => (
-					<TableRow key={index}>
+					<TableRow key={`${row.id}-row`}>
 						{props.columns.map(column => (
 							<TableCell key={`${column.key}-body`}>{column.selector(row, index)}</TableCell>
 						))}

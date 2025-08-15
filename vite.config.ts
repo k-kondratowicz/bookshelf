@@ -34,6 +34,11 @@ export default defineConfig({
 		postcss: {
 			plugins: [postcssAutoprefixer() as any],
 		},
+
+		modules: {
+			generateScopedName: '[name]_[local]_[hash:base64:5]',
+			localsConvention: 'camelCaseOnly',
+		},
 	},
 
 	server: {

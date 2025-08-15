@@ -1,9 +1,8 @@
-import './Dialog.scss';
-
 import classNames from 'classnames';
 import { ReactNode, SyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 import Teleport from '../teleport/Teleport';
+import styles from './Dialog.module.scss';
 // import DialogBackdrop from './backdrop/DialogBackdrop';
 
 export interface DialogTriggerProps {
@@ -62,7 +61,7 @@ export default function Dialog(props: DialogProps) {
 	}, []);
 
 	const handleTransitionEnd = (ev: SyntheticEvent<HTMLDivElement, TransitionEvent>) => {
-		if ((ev.target as HTMLElement).classList.contains('dialog--is-animating-out')) {
+		if ((ev.target as HTMLElement).classList.contains(styles.isAnimatingOut)) {
 			setIsDialogOpen(false);
 			props.onClose?.();
 		}
@@ -83,20 +82,21 @@ export default function Dialog(props: DialogProps) {
 					{/* <DialogBackdrop /> */}
 
 					<div
-						className={classNames('dialog', [
-							`dialog--${props.size || 'small'}`,
+						className={classNames(styles.dialog, [
+							styles[props.size || 'small'],
 							{
-								'dialog--is-animating-in': isAnimatingIn,
-								'dialog--is-animating-out': isAnimatingOut && !isAnimatingIn,
+								[styles.isAnimatingIn]: isAnimatingIn,
+								[styles.isAnimatingOut]: isAnimatingOut && !isAnimatingIn,
 							},
 						])}
 						onTransitionEnd={handleTransitionEnd}
 						tabIndex={-1}
-						ref={dialogRoot}>
-						<div className="dialog__background" onClick={close} />
+						ref={dialogRoot}
+					>
+						<div className={styles.background} onClick={close} />
 
-						<div className="dialog__container">
-							<div className="dialog__content">
+						<div className={styles.container}>
+							<div className={styles.content}>
 								{typeof props.children === 'function'
 									? props.children({
 											open,
@@ -107,7 +107,7 @@ export default function Dialog(props: DialogProps) {
 							</div>
 
 							{!props.hideCloseButton && (
-								<button onClick={close} className="dialog__close">
+								<button onClick={close} className={styles.close}>
 									❌<span className="visually-hidden">Close</span>
 								</button>
 							)}

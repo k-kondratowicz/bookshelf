@@ -1,10 +1,10 @@
-import './AppMenu.scss';
-
 import { NavLink } from 'react-router';
 
 import { NAV_LINKS } from '@/constants/nav';
 import { useBookshelvesListQuery } from '@/hooks/queries';
 import { BookshelvesListItem } from '@/types/bookshelves';
+
+import styles from './AppMenu.module.scss';
 
 function getBookshelfVolumeCount(id: number, list?: BookshelvesListItem[]) {
 	return list?.find(item => item.id === id)?.volumeCount ?? 0;
@@ -14,8 +14,8 @@ export default function AppMenu() {
 	const { data, isPending } = useBookshelvesListQuery();
 
 	return (
-		<nav className="app-menu" aria-labelledby="main-navigation">
-			<span id="main-navigation" className="app-menu__label">
+		<nav className={`${styles.container}`} aria-labelledby="main-navigation">
+			<span id="main-navigation" className={styles.label}>
 				My Library
 			</span>
 
@@ -23,13 +23,14 @@ export default function AppMenu() {
 				return (
 					<NavLink
 						to={to}
-						className={({ isActive }) => `app-menu__link ${isActive ? 'is-active' : ''}`}
+						className={({ isActive }) => `${styles.link} ${isActive ? styles.isActive : ''}`}
 						key={`nav-link-${to}`}
-						viewTransition={true}>
+						viewTransition={true}
+					>
 						<span>{label}</span>
 
 						{id !== undefined && (
-							<span className={`app-menu__link-count ${isPending ? 'is-pending' : ''}`}>
+							<span className={`${styles.linkCount} ${isPending ? styles.isPending : ''}`}>
 								{getBookshelfVolumeCount(id, data?.items)}
 							</span>
 						)}

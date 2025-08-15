@@ -11,14 +11,7 @@
 	border: 1px solid;
 	border-radius: 0.4rem;
 
-	&__content {
-		&--is-hidden {
-			visibility: hidden;
-			opacity: 0;
-		}
-	}
-
-	&--light {
+	&.light {
 		color: $color_bg;
 		border-color: $color_text;
 		background-color: $color_text;
@@ -35,7 +28,7 @@
 		}
 	}
 
-	&--medium {
+	&.medium {
 		color: $color_text;
 		border-color: $color_zinc_750;
 		background-color: $color_zinc_750;
@@ -52,7 +45,7 @@
 		}
 	}
 
-	&--dark {
+	&.dark {
 		color: $color_text;
 		border-color: $color_zinc_900;
 		background-color: $color_zinc_900;
@@ -70,13 +63,20 @@
 		}
 	}
 
-	&--small-size {
+	&.small-size {
 		@include font-small-alt;
 
 		padding: $spacing_1;
 	}
 
-	&--large-size {
+	&.large-size {
 		@include font-base;
+	}
+}
+
+.content {
+	&.is-hidden {
+		visibility: hidden;
+		opacity: 0;
 	}
 }

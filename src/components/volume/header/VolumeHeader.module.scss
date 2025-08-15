@@ -1,0 +1,32 @@
+.container {
+	padding-right: $spacing_2;
+}
+	
+.title {
+	color: $color_zinc_50;
+
+	&.medium {
+		@include font-h4;
+	}
+
+	&.large {
+		@include font-h3;
+	}
+}
+
+.authors {
+	color: $color_zinc_100;
+
+	&.small {
+		@include font-small-alt;
+	}
+
+	&.medium {
+		@include font-small;
+	}
+
+	&.large {
+		@include font-base;
+	}
+}
+

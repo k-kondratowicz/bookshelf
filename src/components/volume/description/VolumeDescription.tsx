@@ -1,8 +1,7 @@
-import './VolumeDescription.scss';
-
+import VolumeInfoBox from '@/components/volume/info-box/VolumeInfoBox';
 import WysiwygContent from '@/components/wysiwyg-content/WysiwygContent';
 
-import VolumeInfoBox from '../info-box/VolumeInfoBox';
+import styles from './VolumeDescription.module.scss';
 
 export interface VolumeDescriptionProps {
 	description: string;
@@ -10,7 +9,7 @@ export interface VolumeDescriptionProps {
 
 export default function VolumeDescription({ description }: VolumeDescriptionProps) {
 	return (
-		<VolumeInfoBox title="Description" className="volume-description">
+		<VolumeInfoBox title="Description" className={styles.container}>
 			<WysiwygContent content={description} />
 		</VolumeInfoBox>
 	);

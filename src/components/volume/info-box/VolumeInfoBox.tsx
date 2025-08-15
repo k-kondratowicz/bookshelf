@@ -1,6 +1,7 @@
-import './VolumeInfoBox.scss';
-
+import classNames from 'classnames';
 import { ReactNode } from 'react';
+
+import styles from './VolumeInfoBox.module.scss';
 
 export interface VolumeInfoBox {
 	title: string;
@@ -10,10 +11,10 @@ export interface VolumeInfoBox {
 
 export default function VolumeInfoBox({ title, children, className }: VolumeInfoBox) {
 	return (
-		<div className={`volume-info-box ${className ?? ''}`}>
-			<h3 className="volume-info-box__title">{title}</h3>
+		<div className={classNames(className)}>
+			<h3 className={styles.title}>{title}</h3>
 
-			<div className="volume-info-box__inner">{children}</div>
+			<div className={styles.inner}>{children}</div>
 		</div>
 	);
 }

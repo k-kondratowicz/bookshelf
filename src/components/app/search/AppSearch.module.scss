@@ -1,0 +1,39 @@
+.container {
+	display: flex;
+	gap: $spacing_1;
+	max-width: calc(50% + #{$spacing_7});
+	height: 100%;
+	margin-inline: auto 0;
+	padding: $spacing_1 $spacing_3;
+}
+
+.label {
+	flex: 1;
+}
+
+.input {
+	width: 100%;
+	height: 100%;
+	padding: $spacing_1 $spacing_3;
+	color: $color_text;
+	transition: background-color $transition_default;
+	border-radius: 0.4rem;
+	background-color: $color_zinc_900;
+
+	@include on-focus {
+		background-color: $color_zinc_750;
+	}
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+	height: 100%;
+	color: $color_zinc_50;
+	cursor: pointer;
+	border-radius: 0.4rem;
+	background-color: $color_zinc_750;
+}
+

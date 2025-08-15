@@ -1,4 +1,4 @@
-.login-page {
+.container {
 	width: 100%;
 	max-width: 40rem;
 	margin-inline: auto;
@@ -7,14 +7,15 @@
 	text-align: center;
 	border: 1px solid $color_zinc_750;
 	border-radius: 0.4rem;
-
-	&__title {
-		@include font-h3;
-
-		margin-bottom: $spacing_8;
-	}
-
-	&__btn {
-		width: 100%;
-	}
 }
+
+.title {
+	@include font-h3;
+
+	margin-bottom: $spacing_8;
+}
+
+.btn {
+	width: 100%;
+}
+

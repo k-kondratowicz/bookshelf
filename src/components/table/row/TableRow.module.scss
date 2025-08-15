@@ -1,4 +1,4 @@
-.table-row {
+.row {
 	display: grid;
 	grid-template-columns: var(--table-layout, repeat(12, 1fr));
 	align-items: center;
