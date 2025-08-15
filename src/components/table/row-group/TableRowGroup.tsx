@@ -1,19 +1,17 @@
-import './TableRowGroup.scss';
+import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
-import { ReactNode } from 'react';
+import styles from './TableRowGroup.module.scss';
 
-export interface TableRowGroupProps {
-	children: ReactNode;
+export interface TableRowGroupProps extends Required<PropsWithChildren> {
 	header?: boolean;
-	className?: boolean;
+	className?: string;
 }
 
-export default function TableRowGroup(props: TableRowGroupProps) {
+export default function TableRowGroup({ header, children, className }: TableRowGroupProps) {
 	return (
-		<div
-			role="rowgroup"
-			className={`table-row-group table-row-group--${props.header ? 'head' : 'default'} ${props.className ?? ''}`}>
-			{props.children}
+		<div role="rowgroup" className={classNames(styles.rowGroup, styles?.[header ? 'head' : 'default'], className)}>
+			{children}
 		</div>
 	);
 }

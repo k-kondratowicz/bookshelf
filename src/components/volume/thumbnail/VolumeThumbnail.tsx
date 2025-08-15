@@ -1,4 +1,8 @@
-import './VolumeThumbnail.scss';
+import classNames from 'classnames';
+
+import { capitalize } from '@/utils/capitalize';
+
+import styles from './VolumeThumbnail.module.scss';
 
 export interface VolumeThumbnailProps {
 	thumbnailUrl: string;
@@ -8,8 +12,8 @@ export interface VolumeThumbnailProps {
 
 export default function VolumeThumbnail({ thumbnailUrl, size = 'default', className }: VolumeThumbnailProps) {
 	return (
-		<div className={`volume-thumbnail volume-thumbnail--size-${size} ${className || ''}`}>
-			<img src={thumbnailUrl} alt="" className="volume-thumbnail__image" loading="lazy" />
+		<div className={classNames(styles.container, styles?.[`size${capitalize(size)}`], className)}>
+			<img src={thumbnailUrl} alt="" className={styles.image} loading="lazy" />
 		</div>
 	);
 }

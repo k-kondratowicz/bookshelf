@@ -1,10 +1,10 @@
-import './AppSearch.scss';
-
 import { useIsFetching } from '@tanstack/react-query';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 import Button from '@/components/button/Button';
+
+import styles from './AppSearch.module.scss';
 
 export default function AppSearch() {
 	const navigate = useNavigate();
@@ -36,13 +36,13 @@ export default function AppSearch() {
 	}
 
 	return (
-		<form className="app-search" onSubmit={handleSubmit}>
-			<label className="app-search__label">
+		<form className={styles.container} onSubmit={handleSubmit}>
+			<label className={styles.label}>
 				<span className="visually-hidden">Search for books</span>
-				<input className="app-search__input" type="search" name="q" placeholder="Search for books" />
+				<input className={styles.input} type="search" name="q" placeholder="Search for books" />
 			</label>
 
-			<Button type="submit" theme="dark" className="app-search__trigger" loading={!!isSearchPending}>
+			<Button type="submit" theme="dark" className={styles.trigger} loading={!!isSearchPending}>
 				🔍
 				<span className="visually-hidden">Search</span>
 			</Button>

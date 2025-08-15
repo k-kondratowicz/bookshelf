@@ -1,25 +1,24 @@
-import './AppHeader.scss';
-
+import AppMenu from '@/components/app/menu/AppMenu';
+import AppSearch from '@/components/app/search/AppSearch';
+import Button from '@/components/button/Button';
 import { useAuthStore } from '@/stores/auth';
 
-import Button from '../../button/Button';
-import AppMenu from '../menu/AppMenu';
-import AppSearch from '../search/AppSearch';
+import styles from './AppHeader.module.scss';
 
 export default function AppHeader() {
 	const clearOAuth = useAuthStore(state => state.clearOAuth);
 
 	return (
-		<header className="app-header">
-			<h1 className="app-header__logo">bookshelf</h1>
+		<header className={styles.container}>
+			<h1 className={styles.logo}>bookshelf</h1>
 
 			<AppMenu />
 
-			<Button theme="medium" className="app-header__logout" onClick={clearOAuth}>
+			<Button theme="medium" className={styles.logout} onClick={clearOAuth}>
 				⏻<span className="visually-hidden">Logout</span>
 			</Button>
 
-			<div className="app-header__search">
+			<div className={styles.search}>
 				<AppSearch />
 			</div>
 		</header>

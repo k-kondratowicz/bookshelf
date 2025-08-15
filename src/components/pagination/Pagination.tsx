@@ -1,6 +1,6 @@
-import './Pagination.scss';
+import Button from '@/components/button/Button';
 
-import Button from '../button/Button';
+import styles from './Pagination.module.scss';
 
 export interface PaginationProps {
 	currentPage: number;
@@ -13,21 +13,21 @@ export default function Pagination({ currentPage, totalItems, maxResults, onPage
 	const hasMoreResults = maxResults * currentPage < totalItems;
 
 	return (
-		<div className="pagination">
+		<div className={styles.container}>
 			<Button
 				theme="medium"
-				className="pagination__button pagination__button--prev"
+				className={styles.button}
 				onClick={() => onPageChange?.(currentPage - 1)}
 				disabled={currentPage <= 1}
 			>
 				Previous
 			</Button>
 
-			<span className="pagination__current-page">{currentPage}</span>
+			<span className={styles.currentPage}>{currentPage}</span>
 
 			<Button
 				theme="medium"
-				className="pagination__button pagination__button--next"
+				className={styles.button}
 				onClick={() => onPageChange?.(currentPage + 1)}
 				disabled={!hasMoreResults}
 			>

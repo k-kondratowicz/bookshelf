@@ -1,21 +1,21 @@
-import './TableCell.scss';
+import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
-import { ReactNode } from 'react';
+import styles from './TableCell.module.scss';
 
-export interface TableCellProps {
-	children: ReactNode;
+export interface TableCellProps extends Required<PropsWithChildren> {
 	header?: boolean;
-	size?: number;
 	className?: string;
 }
 
-export default function TableCell(props: TableCellProps) {
+export default function TableCell({ header, className, children }: TableCellProps) {
 	return (
 		<div
-			role={props.header ? 'columnheader' : 'cell'}
-			className={`table-cell table-cell--${props.header ? 'head' : 'default'} ${props.className ?? ''}`}
-			aria-sort="none">
-			{props.children}
+			role={header ? 'columnheader' : 'cell'}
+			className={classNames(styles.cell, styles?.[header ? 'head' : 'default'], className)}
+			aria-sort="none"
+		>
+			{children}
 		</div>
 	);
 }

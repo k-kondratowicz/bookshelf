@@ -1,8 +1,9 @@
-import './Button.scss';
-
+import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
-import LoaderSpinner from '../loader-spinner/LoaderSpinner';
+import LoaderSpinner from '@/components/loader-spinner/LoaderSpinner';
+
+import styles from './Button.module.scss';
 
 export interface ButtonProps extends Required<PropsWithChildren> {
 	onClick?: () => void;
@@ -15,13 +16,16 @@ export interface ButtonProps extends Required<PropsWithChildren> {
 }
 
 export default function Button({ theme, size, onClick, className, children, type, disabled, loading }: ButtonProps) {
+	const stylesSize = styles[`${size || 'medium'}Size` as keyof typeof styles];
+
 	return (
 		<button
 			type={`${type ?? 'button'}`}
 			onClick={onClick}
-			className={`button button--${theme} button--${size ?? 'medium'}-size ${className ?? ''}`}
-			disabled={disabled || loading}>
-			<span className={`button__content ${loading ? 'button__content--is-hidden' : ''}`}>{children}</span>
+			className={classNames(styles.button, styles[theme], stylesSize, className)}
+			disabled={disabled || loading}
+		>
+			<span className={`${styles.content} ${loading ? styles.isHidden : ''}`}>{children}</span>
 			{loading && <LoaderSpinner />}
 		</button>
 	);

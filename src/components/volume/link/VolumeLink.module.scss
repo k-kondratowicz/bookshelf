@@ -1,4 +1,4 @@
-.volume-link {
+.container {
 	$self: &;
 
 	display: flex;
@@ -17,26 +17,22 @@
 		border-radius: 0.4rem;
 		inset: 0;
 	}
+}
 
-	&__info,
-	&__visual {
-		position: relative;
-		z-index: $z_index_base;
-	}
+.info,
+.visual {
+	position: relative;
+	z-index: $z_index_base;
+}
 
-	&__info {
-		padding-right: $spacing_2;
-	}
+.info {
+	padding-right: $spacing_2;
+}
 
-	&__visual {
-		flex-shrink: 0;
-	}
+.visual {
+	flex-shrink: 0;
+}
 
-	&__title {
-		color: $color_zinc_50;
-	}
-
-	&__authors {
-		@include font-small-alt;
-	}
+.title {
+	color: $color_zinc_50;
 }

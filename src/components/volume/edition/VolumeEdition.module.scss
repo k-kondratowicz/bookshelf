@@ -1,0 +1,22 @@
+.details {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: $spacing_2;
+}
+
+.details-key {
+	@include font-small-alt;
+
+	color: $color_zinc_250;
+}
+
+.details-value {
+	&.print-type {
+		text-transform: lowercase;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+}
+

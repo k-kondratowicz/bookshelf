@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	min-height: 100svh;
+}
+
+.header {
+	width: 100%;
+	max-width: 36rem;
+	height: 100svh;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: $z_index_header;
+	border-right: 1px solid $color_zinc_750;
+}
+
+.content {
+	flex: 1;
+	max-width: calc(100% - 36rem);
+	padding: ($spacing_9 + $spacing_4) $spacing_4 $spacing_4;
+}

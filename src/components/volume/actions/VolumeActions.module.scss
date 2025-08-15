@@ -1,0 +1,26 @@
+.heading {
+	@include font-h4;
+
+	margin-bottom: $spacing_2;
+}
+
+.bookshelf-item {
+	display: flex;
+	gap: $spacing_1;
+	align-items: center;
+}
+
+.buttons {
+	display: flex;
+	gap: $spacing_1;
+	justify-content: flex-end;
+	margin-top: $spacing_4;
+}
+
+.fav {
+	margin-right: auto;
+}
+
+.save {
+	min-width: 10rem;
+}

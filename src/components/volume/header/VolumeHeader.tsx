@@ -1,9 +1,10 @@
-import './VolumeHeader.scss';
-
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 
 import { VolumeFull, VolumeSimple } from '@/types/volume';
 import { parseAuthors } from '@/utils/parseAuthors';
+
+import styles from './VolumeHeader.module.scss';
 
 export interface VolumeHeaderProps {
 	volume: VolumeSimple | VolumeFull;
@@ -23,9 +24,9 @@ export default function VolumeHeader({
 	const { title, authors } = volume.volumeInfo;
 
 	return (
-		<div className={`volume-header ${className || ''}`}>
-			<h2 className={`volume-header__title volume-header__title--${titleSize}`}>{title}</h2>
-			<div className={`volume-header__authors volume-header__authors--${authorsSize}`}>{parseAuthors(authors)}</div>
+		<div className={classNames(styles.container, className)}>
+			<h2 className={classNames(styles.title, styles?.[titleSize])}>{title}</h2>
+			<div className={classNames(styles.authors, styles?.[authorsSize])}>{parseAuthors(authors)}</div>
 
 			{children}
 		</div>

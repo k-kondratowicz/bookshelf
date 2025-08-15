@@ -1,5 +1,3 @@
-import './VolumeActions.scss';
-
 import { ChangeEvent, useRef } from 'react';
 import { toast } from 'react-toastify';
 
@@ -7,6 +5,8 @@ import Button from '@/components/button/Button';
 import { NAV_LINKS } from '@/constants/nav';
 import { useVolumeActions } from '@/hooks/volume/useVolumeActions';
 import { VolumeSimple } from '@/types/volume';
+
+import styles from './VolumeActions.module.scss';
 
 export interface VolumeActionsProps {
 	volume: VolumeSimple;
@@ -60,12 +60,12 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 	}
 
 	return (
-		<div className="volume-actions">
-			<h3 className="volume-actions__heading">Move to...</h3>
+		<div>
+			<h3 className={styles.heading}>Move to...</h3>
 
 			{MOVE_TO_ACTIONS.map(action => (
 				<div key={action.id}>
-					<label className="volume-actions__bookshelf-item">
+					<label className={styles.bookshelfItem}>
 						<input type="radio" name="bookshelf" value={action.id} onChange={handleRadioChange} />
 
 						<span>{action.label}</span>
@@ -73,14 +73,14 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 				</div>
 			))}
 
-			<div className="volume-actions__buttons">
-				<Button theme="medium" className="volume-actions__fav" onClick={handleAddToFav} loading={isAnyActionPending}>
+			<div className={styles.buttons}>
+				<Button theme="medium" className={styles.fav} onClick={handleAddToFav} loading={isAnyActionPending}>
 					❤️
 					<span className="visually-hidden">Add to favorites</span>
 				</Button>
 
 				{close && (
-					<Button theme="medium" onClick={close} className="volume-actions__cancel" disabled={isAnyActionPending}>
+					<Button theme="medium" onClick={close} disabled={isAnyActionPending}>
 						Cancel
 					</Button>
 				)}
@@ -88,7 +88,7 @@ export default function VolumeActions({ volume, close }: VolumeActionsProps) {
 				<Button
 					theme="light"
 					disabled={!selectedBookshelf}
-					className="volume-actions__save"
+					className={styles.save}
 					onClick={handleMoveVolume}
 					loading={isAnyActionPending}
 				>

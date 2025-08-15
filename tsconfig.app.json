@@ -1,5 +1,15 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "additionalData": "@import './src/sass/index.scss';",
+          "classnameTransform": "camelCaseOnly",
+          "allowUnknownClassnames": true
+        }
+      }
+    ],
     "strictNullChecks": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",

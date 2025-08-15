@@ -1,4 +1,6 @@
-import './WysiwygContent.scss';
+import classNames from 'classnames';
+
+import styles from './WysiwygContent.module.scss';
 
 export interface WysiwygContentProps {
 	content: string;
@@ -8,7 +10,7 @@ export interface WysiwygContentProps {
 export default function WysiwygContent({ content, className }: WysiwygContentProps) {
 	return (
 		<div
-			className={`wysiwyg-content ${className ?? ''}`}
+			className={classNames(styles.container, className)}
 			dangerouslySetInnerHTML={{
 				__html: content,
 			}}

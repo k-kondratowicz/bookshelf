@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	gap: $spacing_1;
+	align-items: center;
+	justify-content: flex-end;
+	margin-top: $spacing_2;
+}
+
+.button {
+	min-width: 10rem;
+}
+
+.current-page {
+	display: inline-block;
+	min-width: 3.5rem;
+	text-align: center;
+}
+

@@ -1,0 +1,31 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_5;
+	height: 100%;
+}
+
+.title {
+	@include font-h2;
+}
+
+.description {
+	@include font-h4;
+
+	font-weight: normal;
+}
+
+.reading-now {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: $spacing_2;
+	width: 100%;
+	max-width: 100%;
+}
+
+.view-all {
+	margin-top: $spacing_2;
+	margin-right: auto;
+}
+

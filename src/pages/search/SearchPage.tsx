@@ -10,7 +10,7 @@ export default function SearchPage() {
 		<>
 			<title>Search Results | Bookshelf</title>
 			{searchQuery && <SearchVolumes searchQuery={searchQuery} />}
-			{!searchQuery && <p className="search-page__empty">Please enter a search query.</p>}
+			{!searchQuery && <p>Please enter a search query.</p>}
 		</>
 	);
 }
