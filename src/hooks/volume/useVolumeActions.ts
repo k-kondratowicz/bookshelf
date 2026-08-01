@@ -6,6 +6,8 @@ export function useVolumeActions(volumeId: string) {
 	const moveToMutation = useMoveVolumeMutation();
 	const addToFavMutation = useAddVolumeToFavMutation();
 
+	const isAnyActionPending = moveToMutation.isPending || addToFavMutation.isPending;
+
 	async function moveVolume(bookshelfId: string) {
 		return to(
 			moveToMutation.mutateAsync({
@@ -22,6 +24,6 @@ export function useVolumeActions(volumeId: string) {
 	return {
 		moveVolume,
 		addToFavourite,
-		isAnyActionPending: moveToMutation.isPending || addToFavMutation.isPending,
+		isAnyActionPending,
 	};
 }
