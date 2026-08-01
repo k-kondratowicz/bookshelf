@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
 
 export function usePagination(pageStart = 1) {
 	const [page, setPage] = useState(pageStart);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [_, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
-	}, [page]);
+
+		setSearchParams(params => {
+			params.set('page', page.toString());
+
+			return params;
+		});
+	}, [page, setSearchParams]);
 
 	function nextPage() {
 		setPage(prev => prev + 1);
